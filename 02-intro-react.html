@@ -33,10 +33,26 @@
       onClick: () => alert('Olá!')
     })
 
+    // Criando um elemento de forma rápida, sem outras props além de children
+    const parag = React.createElement('p', null, 'Parágrafo simples')
+
+    /*
+      Criando um elemento container para englobar os elementos que devem
+      ser exibidos.
+      Nesse caso, usamos a função React.createElement() com três parâmetros,
+      onde o terceiro parâmetro indica o conteúdo ("children") do elemento
+    */
+    const container = React.createElement('div', { id: 'container' }, [
+      novaDiv,
+      botao,
+      parag
+    ])
+
     // "Encaixando" o novo elemento na estrutura da página
     const root = ReactDOM.createRoot(document.getElementById('root'))
-    root.render(novaDiv)
-    root.render(botao)
+    //root.render(novaDiv)
+    //root.render(botao)
+    root.render(container)
 
   </script>
   
