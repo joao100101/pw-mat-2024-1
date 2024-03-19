@@ -29,6 +29,46 @@
       Este exercício contará para a nota de Participação e Assiduidade (PA).
     */
 
+    function Form() {
+
+      const valorReaisRef = React.useRef()
+      const cotacaoDolarRef = React.useRef()
+      const resultadoRef = React.useRef()
+
+      function handleChange() {
+        const valorReais = Number(valorReaisRef.current.value)
+        const cotacaoDolar = Number(cotacaoDolarRef.current.value)
+
+        const valorConvertido = valorReais / cotacaoDolar
+
+        resultadoRef.current.textContent = valorConvertido
+      }
+
+      return (
+        <>
+          <h1>Conversor de moedas</h1>
+          <form>
+            <div>
+              <label>
+                <span>Valor em reais</span>
+                <input ref={valorReaisRef} type="number" onChange={handleChange} />
+              </label>
+            </div>
+            <div>
+              <label>
+                <span>Cotação do dólar</span>
+                <input ref={cotacaoDolarRef} type="number" onChange={handleChange} />
+              </label>
+            </div>
+            <div ref={resultadoRef}></div>
+          </form>
+        </>
+      )
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'))
+    root.render(<Form />)
+
   </script>
   
 </body>
